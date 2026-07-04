@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8765/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>拾光信函 — 拾起散落的光，寄给正在赶路的人</title>
+  <link rel="stylesheet" href="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/css2" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-decoration" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="app">
+
+    <!-- 登录 / 注册 -->
+    <section id="page-login" class="page page-full active">
+      <div class="login-wrap">
+        <header class="login-hero">
+          <div class="logo-envelope" aria-hidden="true">
+            <svg viewBox="0 0 80 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="12" width="72" height="48" rx="6" fill="#E8D5F2" stroke="#B8956B" stroke-width="2"></rect>
+              <path d="M4 18L40 40L76 18" stroke="#B8956B" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M4 54L28 36" stroke="#C4A574" stroke-width="1.5" stroke-linecap="round" opacity="0.6"></path>
+              <path d="M76 54L52 36" stroke="#C4A574" stroke-width="1.5" stroke-linecap="round" opacity="0.6"></path>
+            </svg>
+          </div>
+          <h1 class="hero-title">拾光信函</h1>
+          <p class="hero-tagline">拾起散落的光，寄给正在赶路的人</p>
+        </header>
+
+        <div class="login-tabs">
+          <button type="button" class="login-tab active" data-login-tab="login">登录</button>
+          <button type="button" class="login-tab" data-login-tab="register">注册</button>
+        </div>
+
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label>手机号</label>
+            <input type="tel" name="phone" required="" placeholder="请输入手机号" maxlength="11" pattern="1[3-9]\d{9}">
+          </div>
+          <div class="form-group">
+            <label>密码</label>
+            <input type="password" name="password" required="" placeholder="请输入密码" minlength="6">
+          </div>
+          <button type="submit" class="btn-primary">登录</button>
+        </form>
+
+        <form id="register-form" class="auth-form hidden">
+          <div class="form-group">
+            <label>昵称</label>
+            <input type="text" name="nickname" required="" placeholder="如何称呼你" maxlength="20">
+          </div>
+          <div class="form-group">
+            <label>手机号</label>
+            <input type="tel" name="phone" required="" placeholder="用于登录与匹配通知" maxlength="11" pattern="1[3-9]\d{9}">
+          </div>
+          <div class="form-group">
+            <label>密码</label>
+            <input type="password" name="password" required="" placeholder="至少 6 位" minlength="6">
+          </div>
+          <div class="form-group">
+            <label>确认密码</label>
+            <input type="password" name="password2" required="" placeholder="再次输入密码" minlength="6">
+          </div>
+          <button type="submit" class="btn-primary">注册并进入</button>
+        </form>
+
+        <p class="login-note">登录即表示同意知情同意书与隐私保护承诺</p>
+      </div>
+    </section>
+
+    <!-- 首页 -->
+    <section id="page-home" class="page">
+      <header class="hero hero-compact">
+        <div class="hero-top">
+          <div>
+            <h1 class="hero-title-sm">拾光信函</h1>
+            <p class="hero-greeting" id="home-greeting">你好</p>
+          </div>
+          <button type="button" class="btn-text" id="btn-logout">退出</button>
+        </div>
+      </header>
+
+      <main class="home-main">
+        <div class="progress-card" id="progress-card"></div>
+
+        <div class="action-card card-inbox" id="card-inbox" data-nav="mailbox">
+          <div class="card-icon-wrap card-icon-inbox">📬</div>
+          <div class="card-body">
+            <h2>我的信函</h2>
+            <p id="card-inbox-desc">查看收件箱与寄信记录</p>
+          </div>
+          <span class="card-arrow">›</span>
+          <div class="card-lock hidden" id="card-inbox-lock">
+            <span>🔒</span>
+            <small id="card-inbox-lock-tip">匹配成功后解锁</small>
+          </div>
+        </div>
+
+        <div class="action-card card-write" id="card-write" data-nav="write">
+          <div class="card-icon-wrap card-icon-write">📮</div>
+          <div class="card-body">
+            <h2>我要写信</h2>
+            <p id="card-write-desc">匹配成功后，即可与信友通信</p>
+          </div>
+          <span class="card-arrow">›</span>
+          <div class="card-lock hidden" id="card-write-lock">
+            <span>🔒</span>
+            <small id="card-write-lock-tip">请先完成前置步骤</small>
+          </div>
+        </div>
+
+        <div class="action-card card-messenger" id="card-messenger" data-nav="messenger">
+          <div class="card-icon-wrap card-icon-messenger">🤝</div>
+          <div class="card-body">
+            <h2>成为信使</h2>
+            <p id="card-messenger-desc">填写信息，开启匹配流程</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </div>
+
+        <section class="stories-section">
+          <h3 class="section-title">📖 拾光集 · 小故事</h3>
+          <div class="divider"></div>
+          <div class="story-list">
+            <p class="story-placeholder">待更新</p>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <!-- 成为信使（必填阶段） -->
+    <section id="page-messenger" class="page">
+      <header class="page-header">
+        <button type="button" class="back-btn" data-nav="home">‹</button>
+        <h1>成为信使</h1>
+        <span class="header-spacer"></span>
+      </header>
+      <main class="form-main">
+        <div class="stage-banner" id="messenger-banner">
+          <span class="stage-banner-icon">①</span>
+          <div>
+            <strong>第一步：完善信使信息</strong>
+            <p>填写以下资料后，团队将根据「三维锚点」为你匹配一位信友</p>
+          </div>
+        </div>
+        <div class="form-intro messenger-intro">
+          <div class="intro-icon">🌱</div>
+          <h2>朋辈信使，不是导师</h2>
+          <p>你不需要给出标准答案。只需以平等的姿态，分享真实经历与可操作的体会，陪伴对方走过一段路。</p>
+        </div>
+        <form id="messenger-form" class="letter-form">
+          <div class="form-group">
+            <label>姓名 <span class="required">*</span></label>
+            <input type="text" name="name" required="" placeholder="真实姓名">
+          </div>
+          <div class="form-group">
+            <label>学校 / 年级 / 专业 <span class="required">*</span></label>
+            <input type="text" name="school" required="" placeholder="如：广东轻工职业技术学院 2024级 社会工作">
+          </div>
+          <div class="form-group">
+            <label>联系方式 <span class="required">*</span></label>
+            <input type="text" name="contact" required="" placeholder="微信号或邮箱">
+          </div>
+          <div class="form-group">
+            <label>可分享的经历领域 <span class="required">*</span></label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="experience" value="job-hunt"> 求职经历</label>
+              <label class="checkbox-item"><input type="checkbox" name="experience" value="intern"> 实习体验</label>
+              <label class="checkbox-item"><input type="checkbox" name="experience" value="vocational"> 职校/专升本</label>
+              <label class="checkbox-item"><input type="checkbox" name="experience" value="emotion"> 情绪调适</label>
+              <label class="checkbox-item"><input type="checkbox" name="experience" value="family"> 家庭关系</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>为什么想成为信使？</label>
+            <textarea name="motivation" rows="4" placeholder="简单说说你的动机……" maxlength="500"></textarea>
+          </div>
+          <div class="form-group">
+            <label>每周可投入时间</label>
+            <select name="availability">
+              <option value="1-2">1-2 小时</option>
+              <option value="2-4">2-4 小时</option>
+              <option value="4+">4 小时以上</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-item consent">
+              <input type="checkbox" name="consent" required="">
+              我已阅读<a href="http://localhost:8765/#" data-nav="guide">《信使培训指南》</a>，承诺遵守通信规范与保密协议
+            </label>
+          </div>
+          <button type="submit" class="btn-primary btn-green">提交并进入等待匹配</button>
+        </form>
+      </main>
+    </section>
+
+    <!-- 等待匹配 -->
+    <section id="page-waiting" class="page">
+      <header class="page-header">
+        <button type="button" class="back-btn" data-nav="home">‹</button>
+        <h1>等待匹配</h1>
+        <span class="header-spacer"></span>
+      </header>
+      <main class="waiting-main">
+        <div class="stage-banner stage-banner-waiting">
+          <span class="stage-banner-icon">②</span>
+          <div>
+            <strong>第二步：等待匹配信友</strong>
+            <p>团队正在为你寻找合适的通信伙伴，请耐心等待</p>
+          </div>
+        </div>
+
+        <div class="waiting-visual">
+          <div class="waiting-animation">🤝</div>
+          <h2>正在匹配中…</h2>
+          <p class="waiting-desc">我们根据「三维锚点」进行人工精细匹配，通常在 <strong>3 个工作日内</strong> 完成。匹配结果将通过你留下的联系方式通知。</p>
+        </div>
+
+        <div class="info-card">
+          <h3>📋 接下来会发生什么</h3>
+          <ol class="flow-steps">
+            <li>团队审核你的信使资料</li>
+            <li>根据硬锚点、软锚点、校验锚点进行匹配</li>
+            <li>匹配成功后，微信/邮件通知你</li>
+            <li>解锁「写信」功能，开始与信友通信</li>
+          </ol>
+        </div>
+
+        <div class="info-card">
+          <h3>💡 等待期间你可以</h3>
+          <ul>
+            <li>阅读<a href="http://localhost:8765/#" data-nav="guide">《通信指南》</a>了解规范</li>
+            <li>留意手机消息，保持联系方式畅通</li>
+            <li>点击下方按钮刷新匹配状态</li>
+          </ul>
+        </div>
+
+        <button type="button" class="btn-secondary" id="btn-refresh-status">刷新匹配状态</button>
+        <p class="waiting-hint" id="waiting-hint"></p>
+      </main>
+    </section>
+
+    <!-- 信函（收件箱） -->
+    <section id="page-mailbox" class="page">
+      <header class="page-header page-header-blur">
+        <button type="button" class="back-btn" data-nav="home">‹</button>
+        <h1>我的信函</h1>
+        <button type="button" class="btn-icon-write" data-nav="write" title="写新信">✍️</button>
+      </header>
+      <main class="mailbox-main">
+        <div class="partner-bar" id="partner-bar">
+          <span class="partner-dot"></span>
+          <span>与 <strong id="partner-name">信友</strong> 的通信</span>
+        </div>
+
+        <div class="mailbox-tabs">
+          <button type="button" class="mailbox-tab active" data-mailbox-tab="inbox">收件箱</button>
+          <button type="button" class="mailbox-tab" data-mailbox-tab="sent">我寄出的</button>
+        </div>
+
+        <div id="mailbox-inbox" class="mailbox-panel active">
+          <div class="mailbox-list" id="inbox-list"></div>
+        </div>
+        <div id="mailbox-sent" class="mailbox-panel">
+          <div class="mailbox-list" id="sent-list"></div>
+        </div>
+
+        <p class="mailbox-note">💡 所有信件经管理员审核通过后，才会出现在对方收件箱</p>
+      </main>
+    </section>
+
+    <!-- 写信页 -->
+    <section id="page-write" class="page">
+      <header class="page-header">
+        <button type="button" class="back-btn" data-nav="home">‹</button>
+        <h1>写信</h1>
+        <span class="header-spacer"></span>
+      </header>
+      <main class="form-main">
+        <div class="stage-banner stage-banner-write">
+          <span class="stage-banner-icon">③</span>
+          <div>
+            <strong>第三步：开始通信</strong>
+            <p>你已与信友匹配成功，可以开始写信了</p>
+          </div>
+        </div>
+        <div class="form-intro">
+          <p>信件提交后将进入<strong>审核队列</strong>，通过后才会送达信友收件箱，全程保护隐私。</p>
+        </div>
+        <form id="letter-form" class="letter-form">
+          <div class="form-group">
+            <label>称呼（可匿名）</label>
+            <input type="text" name="nickname" placeholder="如：小光、匿名" maxlength="20">
+          </div>
+          <div class="form-group">
+            <label>当前阶段 <span class="required">*</span></label>
+            <select name="stage" required="">
+              <option value="">请选择</option>
+              <option value="intern">实习期</option>
+              <option value="job-hunt">求职中</option>
+              <option value="graduating">即将毕业</option>
+              <option value="unemployed">已毕业未就业</option>
+              <option value="transition">转型/迷茫期</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>困扰主题 <span class="required">*</span></label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="topic" value="career"> 学业/就业</label>
+              <label class="checkbox-item"><input type="checkbox" name="topic" value="relationship"> 人际关系</label>
+              <label class="checkbox-item"><input type="checkbox" name="topic" value="family"> 原生家庭</label>
+              <label class="checkbox-item"><input type="checkbox" name="topic" value="emotion"> 情绪困扰</label>
+              <label class="checkbox-item"><input type="checkbox" name="topic" value="identity"> 自我认同</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>希望通信频率</label>
+            <select name="frequency">
+              <option value="weekly">每周 1 封</option>
+              <option value="biweekly">每 3 天 1 封</option>
+              <option value="flexible">灵活安排</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>你的信 <span class="required">*</span></label>
+            <textarea name="content" rows="8" required="" placeholder="写下你想说的话……这里没有评判，只有倾听。" maxlength="2000"></textarea>
+            <span class="char-count"><span id="char-count">0</span>/2000</span>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-item consent">
+              <input type="checkbox" name="consent" required="">
+              我已阅读并同意<a href="http://localhost:8765/#" data-nav="guide">《知情同意书》</a>与隐私保护承诺
+            </label>
+          </div>
+          <button type="submit" class="btn-primary">寄出这封信</button>
+        </form>
+      </main>
+    </section>
+
+    <!-- 指南页 -->
+    <section id="page-guide" class="page">
+      <header class="page-header">
+        <button type="button" class="back-btn" data-nav="home">‹</button>
+        <h1>指南</h1>
+        <span class="header-spacer"></span>
+      </header>
+      <main class="guide-main">
+        <nav class="guide-tabs">
+          <button type="button" class="guide-tab active" data-tab="about">项目介绍</button>
+          <button type="button" class="guide-tab" data-tab="rules">通信规范</button>
+          <button type="button" class="guide-tab" data-tab="safety">安全须知</button>
+        </nav>
+        <div class="guide-content">
+          <article id="tab-about" class="guide-panel active">
+            <h2>关于拾光信函</h2>
+            <p>「拾光信函」是微光同行动团队发起的朋辈支持项目，面向处于实习、求职、毕业转型等阶段的青年，提供<strong>安全、平等、低压力</strong>的书信式陪伴。</p>
+            <div class="info-card">
+              <h3>🎯 使用流程</h3>
+              <ol class="flow-steps">
+                <li>注册登录账号</li>
+                <li>填写「成为信使」信息</li>
+                <li>等待团队匹配信友</li>
+                <li>匹配成功后开始写信通信</li>
+              </ol>
+            </div>
+            <div class="info-card">
+              <h3>🔗 三维锚点匹配</h3>
+              <ul>
+                <li><strong>硬锚点</strong>：性别、所处阶段等，确保「聊得通」</li>
+                <li><strong>软锚点</strong>：性格、通信频率、困扰主题，确保「处得来」</li>
+                <li><strong>校验锚点</strong>：朋辈关系定位，确保「角色清晰」</li>
+              </ul>
+            </div>
+          </article>
+          <article id="tab-rules" class="guide-panel">
+            <h2>通信规范</h2>
+            <div class="info-card">
+              <h3>✅ 鼓励</h3>
+              <ul>
+                <li>分享真实、具体的个人经历</li>
+                <li>尊重对方节奏，每 3-5 天一封为宜</li>
+                <li>使用「我当时…」「我的体会是…」的表述</li>
+              </ul>
+            </div>
+            <div class="info-card warning">
+              <h3>🚫 禁止</h3>
+              <ul>
+                <li>索取或泄露真实身份信息</li>
+                <li>说教、评判、强行给建议</li>
+                <li>涉及违法、色情、暴力内容</li>
+              </ul>
+            </div>
+          </article>
+          <article id="tab-safety" class="guide-panel">
+            <h2>安全须知</h2>
+            <div class="info-card danger">
+              <h3>⚠️ 危机信号</h3>
+              <p>如出现自伤、轻生等表述，请立即通知团队。</p>
+            </div>
+            <div class="info-card">
+              <h3>📞 紧急求助</h3>
+              <p class="hotline">全国心理援助热线：<strong>12356</strong></p>
+            </div>
+          </article>
+        </div>
+      </main>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <nav class="bottom-nav hidden" id="bottom-nav">
+      <button type="button" class="nav-item" data-nav="home">
+        <span class="nav-icon">🏠</span>
+        <span>首页</span>
+      </button>
+      <button type="button" class="nav-item nav-item-locked" data-nav="mailbox" id="nav-mailbox">
+        <span class="nav-icon">📬</span>
+        <span>信函</span>
+        <span class="nav-lock-badge hidden" id="nav-mailbox-lock">🔒</span>
+      </button>
+      <button type="button" class="nav-item nav-item-locked" data-nav="write" id="nav-write">
+        <span class="nav-icon">✍️</span>
+        <span>写信</span>
+        <span class="nav-lock-badge hidden" id="nav-write-lock">🔒</span>
+      </button>
+      <button type="button" class="nav-item" data-nav="guide">
+        <span class="nav-icon">📋</span>
+        <span>指南</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 信件详情弹层 -->
+  <div id="letter-modal" class="modal-overlay hidden">
+    <div class="modal-sheet letter-modal-sheet">
+      <div class="letter-paper">
+        <div class="letter-paper-header">
+          <span id="modal-letter-from"></span>
+          <span id="modal-letter-date"></span>
+        </div>
+        <div id="modal-letter-content" class="letter-paper-body"></div>
+      </div>
+      <button type="button" class="btn-primary" id="modal-close">关闭</button>
+    </div>
+  </div>
+
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/config.js.下载"></script>
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/auth.js.下载"></script>
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/letters.js.下载"></script>
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/supabase.js.下载"></script>
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/setup.js.下载"></script>
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/router.js.下载"></script>
+  <script src="./拾光信函 — 拾起散落的光，寄给正在赶路的人_files/app.js.下载"></script>
+
+
+</body></html>
